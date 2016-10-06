@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_favorites"
+            android:icon="@drawable/ic_favorites"
+            android:title="Favorites" />
+
+        <item
+            android:id="@+id/nav_following"
+            android:icon="@drawable/ic_following"
+            android:title="Following" />
+
+        <item
+            android:id="@+id/nav_rated"
+            android:icon="@drawable/ic_rated"
+            android:title="Rated" />
+
+        <item
+            android:id="@+id/nav_tasted"
+            android:icon="@drawable/ic_tasted"
+            android:title="Tasted" />
+        <item
+            android:id="@+id/nav_wishlist"
+            android:icon="@drawable/ic_wishlist"
+            android:title="Wishlist" />
+
+    </group>
+
+    <item android:title="Misc">
+        <menu>
+            <item
+                android:id="@+id/nav_categories"
+                android:icon="@drawable/ic_categories"
+                android:title="Categories" />
+
+            <item
+                android:id="@+id/nav_recipes"
+                android:icon="@drawable/ic_recipes"
+                android:title="Recipes" />
+        </menu>
+    </item>
+
+</menu>

@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">BeerHunters</string>
+    <string name="hint_search">BeerHunters</string>
+    <string name="one">one</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Settings</string>
+</resources>
