@@ -1,8 +1,13 @@
 package ca.etsmtl.beerhunters.activities;
 
+import android.graphics.Color;
+import android.graphics.PorterDuff;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.TabLayout;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
@@ -12,20 +17,34 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import ca.etsmtl.beerhunters.R;
-import ca.etsmtl.beerhunters.adapter.SimpleTapbsadapter;
+
 import ca.etsmtl.beerhunters.fragment.ConnectFragment;
 import ca.etsmtl.beerhunters.fragment.EventsFragment;
 import ca.etsmtl.beerhunters.fragment.NewsFragment;
 import ca.etsmtl.beerhunters.fragment.PlacesFragment;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import ca.etsmtl.beerhunters.R;
+
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
-    TabLayout mTabs;
+ /*   TabLayout mTabs;
     private ViewPager tabsviewPager;
-    private SimpleTapbsadapter mTabsAdapter;
+    private SimpleTapbsadapter mTabsAdapter;*/
+
+    private Toolbar toolbar;
+    private TabLayout tabLayout;
+    private ViewPager viewPager;
+    private int[] tabIcons = {
+            R.drawable.ic_tab_news,
+            R.drawable.ic_tab_places,
+            R.drawable.ic_tab_events,
+            R.drawable.ic_tab_connect
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,22 +54,33 @@ public class MainActivity extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        tabsviewPager = (ViewPager) findViewById(R.id.tabspager);
+
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        viewPager = (ViewPager) findViewById(R.id.tabspager);
+        setupViewPager(viewPager);
+
+        tabLayout = (TabLayout) findViewById(R.id.tabs);
+        tabLayout.setupWithViewPager(viewPager);
+
+        setupTabIcons();
+
+        /*tabsviewPager = (ViewPager) findViewById(R.id.tabspager);
 
         mTabsAdapter = new SimpleTapbsadapter(getSupportFragmentManager());
 
         //creating the tabs and adding them to adapter class
-        mTabsAdapter.addFragment(new NewsFragment(), "NEWSFEED");
-        mTabsAdapter.addFragment(new PlacesFragment(), "PLACES");
-        mTabsAdapter.addFragment(new EventsFragment(), "EVENTS");
-        mTabsAdapter.addFragment(new ConnectFragment(), "CONNECT");
+        mTabsAdapter.addFragment(new oldNewsFragment(), "NEWSFEED");
+        mTabsAdapter.addFragment(new oldPlacesFragment(), "PLACES");
+        mTabsAdapter.addFragment(new oldEventsFragment(), "EVENTS");
+        mTabsAdapter.addFragment(new oldConnectFragment(), "CONNECT");
 
         //setup viewpager to give swipe effect
         tabsviewPager.setAdapter(mTabsAdapter);
 
         mTabs = (TabLayout) findViewById(R.id.tabs);
         mTabs.setupWithViewPager(tabsviewPager);
-
+*/
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
@@ -61,12 +91,44 @@ public class MainActivity extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
     }
 
-   /* private void setupViewPager(ViewPager viewPager) {
+    private void setupTabIcons() {
+        tabLayout.getTabAt(0).setIcon(tabIcons[0]);
+        tabLayout.getTabAt(1).setIcon(tabIcons[1]);
+        tabLayout.getTabAt(2).setIcon(tabIcons[2]);
+        tabLayout.getTabAt(3).setIcon(tabIcons[3]);
+
+        tabLayout.getTabAt(0).getIcon().setColorFilter(Color.WHITE, PorterDuff.Mode.SRC_IN);
+        tabLayout.getTabAt(1).getIcon().setColorFilter(Color.parseColor("#FFA789"), PorterDuff.Mode.SRC_IN);
+        tabLayout.getTabAt(2).getIcon().setColorFilter(Color.parseColor("#FFA789"), PorterDuff.Mode.SRC_IN);
+        tabLayout.getTabAt(3).getIcon().setColorFilter(Color.parseColor("#FFA789"), PorterDuff.Mode.SRC_IN);
+
+        tabLayout.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+            @Override
+            public void onTabSelected(TabLayout.Tab tab) {
+                tab.getIcon().setColorFilter(Color.WHITE, PorterDuff.Mode.SRC_IN);
+
+            }
+
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) {
+                tab.getIcon().setColorFilter(Color.parseColor("#FFA789"), PorterDuff.Mode.SRC_IN);
+            }
+
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {
+
+            }
+        });
+
+    }
+
+   private void setupViewPager(ViewPager viewPager) {
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
-        adapter.addFragment(new NewsFragments(), "ONE");
-        adapter.addFragment(new PlacesFragments(), "TWO");
-        adapter.addFragment(new EventsFragments(), "THREE");
-        adapter.addFragment(new ConnectFragments(), "FOUR");
+        adapter.addFragment(new NewsFragment(), "NEWS");
+        adapter.addFragment(new PlacesFragment(), "PLACES");
+        adapter.addFragment(new EventsFragment(), "EVENTS");
+        adapter.addFragment(new ConnectFragment(), "CONNECT");
+
         viewPager.setAdapter(adapter);
     }
 
@@ -95,10 +157,12 @@ public class MainActivity extends AppCompatActivity
 
         @Override
         public CharSequence getPageTitle(int position) {
-            return mFragmentTitleList.get(position);
+            //return mFragmentTitleList.get(position);
+            // return null to display only the icon
+            return null;
         }
     }
-*/
+
     @Override
     public void onBackPressed() {
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
