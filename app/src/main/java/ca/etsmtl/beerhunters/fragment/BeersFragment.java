@@ -9,12 +9,12 @@ import android.view.ViewGroup;
 import ca.etsmtl.beerhunters.R;
 
 /**
- * Created by julie on 9/25/2016.
- *
+ * Created by julie on 10/10/2016.
  */
-public class ConnectFragment extends Fragment{
-    public ConnectFragment() {
-        // Required empty public constructor
+public class BeersFragment extends Fragment {
+
+    public BeersFragment() {
+
     }
 
     @Override
@@ -26,6 +26,7 @@ public class ConnectFragment extends Fragment{
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_connect, container, false);
+        return inflater.inflate(R.layout.fragment_beers, container, false);
     }
+
 }

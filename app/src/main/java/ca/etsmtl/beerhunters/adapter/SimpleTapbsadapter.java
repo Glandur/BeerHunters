@@ -1,3 +1,4 @@
+/*
 package ca.etsmtl.beerhunters.adapter;
 
 
@@ -8,9 +9,11 @@ import android.support.v4.app.FragmentPagerAdapter;
 import java.util.ArrayList;
 import java.util.List;
 
+*/
 /**
  * Created by julie on 10/5/2016.
- */
+ *//*
+
 public class SimpleTapbsadapter extends FragmentPagerAdapter {
 
 
@@ -44,3 +47,4 @@ public class SimpleTapbsadapter extends FragmentPagerAdapter {
 
 
 }
+*/

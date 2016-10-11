@@ -22,6 +22,7 @@ import ca.etsmtl.beerhunters.fragment.ConnectFragment;
 import ca.etsmtl.beerhunters.fragment.EventsFragment;
 import ca.etsmtl.beerhunters.fragment.NewsFragment;
 import ca.etsmtl.beerhunters.fragment.PlacesFragment;
+import ca.etsmtl.beerhunters.fragment.BeersFragment;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -32,10 +33,8 @@ import ca.etsmtl.beerhunters.R;
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
- /*   TabLayout mTabs;
-    private ViewPager tabsviewPager;
-    private SimpleTapbsadapter mTabsAdapter;*/
-
+    private DrawerLayout drawer;
+    private NavigationView navigationView;
     private Toolbar toolbar;
     private TabLayout tabLayout;
     private ViewPager viewPager;
@@ -43,7 +42,8 @@ public class MainActivity extends AppCompatActivity
             R.drawable.ic_tab_news,
             R.drawable.ic_tab_places,
             R.drawable.ic_tab_events,
-            R.drawable.ic_tab_connect
+            R.drawable.ic_tab_connect,
+            R.drawable.ic_tab_beer
     };
 
     @Override
@@ -51,72 +51,68 @@ public class MainActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        initToolbar();
+        initViewPager();
+        initTabLayout();
+        initDrawerLayout();
+        initNavigationView();
+
+    }
+
+
+    private void initToolbar(){
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
-
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+    }
 
+    private void initViewPager(){
         viewPager = (ViewPager) findViewById(R.id.tabspager);
         setupViewPager(viewPager);
+    }
 
+    private void initTabLayout(){
         tabLayout = (TabLayout) findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(viewPager);
 
         setupTabIcons();
+    }
 
-        /*tabsviewPager = (ViewPager) findViewById(R.id.tabspager);
-
-        mTabsAdapter = new SimpleTapbsadapter(getSupportFragmentManager());
-
-        //creating the tabs and adding them to adapter class
-        mTabsAdapter.addFragment(new oldNewsFragment(), "NEWSFEED");
-        mTabsAdapter.addFragment(new oldPlacesFragment(), "PLACES");
-        mTabsAdapter.addFragment(new oldEventsFragment(), "EVENTS");
-        mTabsAdapter.addFragment(new oldConnectFragment(), "CONNECT");
-
-        //setup viewpager to give swipe effect
-        tabsviewPager.setAdapter(mTabsAdapter);
-
-        mTabs = (TabLayout) findViewById(R.id.tabs);
-        mTabs.setupWithViewPager(tabsviewPager);
-*/
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-        drawer.setDrawerListener(toggle);
-        toggle.syncState();
-
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+    private void initNavigationView(){
+        navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
     }
 
+    private void initDrawerLayout(){
+        drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        drawer.setDrawerListener(toggle);
+        toggle.syncState();
+    }
+
+    private void initSnackbar(){
+        //snackbar = Snackbar.make(getRootView(), getResources().getString(R.string.dialog_loading_beers), Snackbar.LENGTH_INDEFINITE);
+    }
+
     private void setupTabIcons() {
-        tabLayout.getTabAt(0).setIcon(tabIcons[0]);
-        tabLayout.getTabAt(1).setIcon(tabIcons[1]);
-        tabLayout.getTabAt(2).setIcon(tabIcons[2]);
-        tabLayout.getTabAt(3).setIcon(tabIcons[3]);
-
+        for (int i = 0; i<tabLayout.getTabCount();i++){
+            tabLayout.getTabAt(i).setIcon(tabIcons[i]);
+        }
         tabLayout.getTabAt(0).getIcon().setColorFilter(Color.WHITE, PorterDuff.Mode.SRC_IN);
-        tabLayout.getTabAt(1).getIcon().setColorFilter(Color.parseColor("#FFA789"), PorterDuff.Mode.SRC_IN);
-        tabLayout.getTabAt(2).getIcon().setColorFilter(Color.parseColor("#FFA789"), PorterDuff.Mode.SRC_IN);
-        tabLayout.getTabAt(3).getIcon().setColorFilter(Color.parseColor("#FFA789"), PorterDuff.Mode.SRC_IN);
-
+        for (int i = 1; i<tabLayout.getTabCount();i++){
+            tabLayout.getTabAt(i).getIcon().setColorFilter(Color.parseColor("#FFA789"), PorterDuff.Mode.SRC_IN);
+        }
         tabLayout.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
                 tab.getIcon().setColorFilter(Color.WHITE, PorterDuff.Mode.SRC_IN);
-
             }
-
             @Override
             public void onTabUnselected(TabLayout.Tab tab) {
                 tab.getIcon().setColorFilter(Color.parseColor("#FFA789"), PorterDuff.Mode.SRC_IN);
             }
-
             @Override
             public void onTabReselected(TabLayout.Tab tab) {
-
             }
         });
 
@@ -128,6 +124,7 @@ public class MainActivity extends AppCompatActivity
         adapter.addFragment(new PlacesFragment(), "PLACES");
         adapter.addFragment(new EventsFragment(), "EVENTS");
         adapter.addFragment(new ConnectFragment(), "CONNECT");
+       adapter.addFragment(new BeersFragment(),"BEERS");
 
         viewPager.setAdapter(adapter);
     }

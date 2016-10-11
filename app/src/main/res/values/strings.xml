@@ -1,9 +1,29 @@
 <resources>
     <string name="app_name">BeerHunters</string>
     <string name="hint_search">BeerHunters</string>
-    <string name="one">one</string>
+
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
+
     <string name="search_title">Search</string>
     <string name="action_settings">Settings</string>
+    <string name="action_search">Search</string>
+
+    <string name="api_key2">c672c390b17a1bebb893fcb0c55f0562</string>
+    <string name="api_key" translatable="false">c672c390b17a1bebb893fcb0c55f0562</string>
+
+    <string name="empty_beer_list">No beers to show</string>
+    <string name="icon">Label of the beer</string>
+    <string name="sample_beer_name">\"Galactic Wrath\" IPA</string>
+    <string name="sample_brewery_name">Stony Creek Beer</string>
+    <string name="sample_beer_style_name">American IPA</string>
+    <string name="sample_creation_date">Tue Jan 11 2011</string>
+    <string name="app_icon">Icon of the app</string>
+    <string name="sure_connection">Please connect to internet to show some beers !</string>
+    <string name="date_format">EEE MMM dd yyyy</string>
+    <string name="no_connection_found">No internet connection, switching to offline mode</string>
+    <string name="cancel">Cancel</string>
+
+
+
 </resources>

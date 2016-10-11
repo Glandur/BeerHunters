@@ -1,3 +1,4 @@
+/*
 package ca.etsmtl.beerhunters.adapter;
 
 import android.support.v4.app.Fragment;
@@ -8,9 +9,11 @@ import android.support.v4.app.FragmentPagerAdapter;
 import java.util.ArrayList;
 import java.util.List;
 
+*/
 /**
  * Created by admin on 10/5/2016.
- */
+ *//*
+
 public class ViewPagerAdapter extends FragmentPagerAdapter {
 
     private final List<Fragment> mFragmentList = new ArrayList<>();
@@ -39,3 +42,4 @@ public class ViewPagerAdapter extends FragmentPagerAdapter {
 
 
 }
+*/
