@@ -18,6 +18,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 
+import ca.etsmtl.beerhunters.fragment.BeerFragment;
 import ca.etsmtl.beerhunters.fragment.ConnectFragment;
 import ca.etsmtl.beerhunters.fragment.EventsFragment;
 import ca.etsmtl.beerhunters.fragment.NewsFragment;
@@ -124,7 +125,7 @@ public class MainActivity extends AppCompatActivity
         adapter.addFragment(new PlacesFragment(), "PLACES");
         adapter.addFragment(new EventsFragment(), "EVENTS");
         adapter.addFragment(new ConnectFragment(), "CONNECT");
-       adapter.addFragment(new BeersFragment(),"BEERS");
+       adapter.addFragment(new BeerFragment(),"BEERS");
 
         viewPager.setAdapter(adapter);
     }

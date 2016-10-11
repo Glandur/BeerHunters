@@ -8,13 +8,11 @@
     <string name="search_title">Search</string>
     <string name="action_settings">Settings</string>
     <string name="action_search">Search</string>
-
-    <string name="api_key2">c672c390b17a1bebb893fcb0c55f0562</string>
     <string name="api_key" translatable="false">c672c390b17a1bebb893fcb0c55f0562</string>
 
-    <string name="empty_beer_list">No beers to show</string>
+    <string name="beer_loading">Loading, please wait</string>
     <string name="icon">Label of the beer</string>
-    <string name="sample_beer_name">\"Galactic Wrath\" IPA</string>
+    <string name="sample_beer_name">\Galactic Wrath\ IPA</string>
     <string name="sample_brewery_name">Stony Creek Beer</string>
     <string name="sample_beer_style_name">American IPA</string>
     <string name="sample_creation_date">Tue Jan 11 2011</string>

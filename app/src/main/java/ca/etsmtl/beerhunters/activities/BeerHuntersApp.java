@@ -7,7 +7,9 @@ import ca.etsmtl.beerhunters.server.AppComponent;
 import ca.etsmtl.beerhunters.server.DaggerAppComponent;
 
 /**
- * Created by admin on 10/10/2016.
+ * Created by julie on 10/1/2016.
+ *
+ *
  */
 public class BeerHuntersApp extends Application {
 
